@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Trip Las Vegas</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/mine.css" rel="stylesheet">
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7L5Thn0JQPrySwt0ZbQRtVyqApvX0wFc"></script>
+		<script type="text/javascript">
+			var hideRoute = true;
+			var p = {
+				geocode: function(address, cb) {
+					if (localStorage[address]) {
+						cb(JSON.parse(localStorage[address]));
+					} else {
+						var geocoder = new google.maps.Geocoder();
+						geocoder.geocode({address: address}, function(results, status) {
+							if (status == google.maps.GeocoderStatus.OK) {
+								lat = results[0].geometry.location.lat();
+								lng = results[0].geometry.location.lng();
+								latlng = {lat: lat, lng: lng};
+								localStorage[address] = JSON.stringify(latlng);
+								cb(latlng);
+							} else {
+								cb(null);
+							}
+						});
+					}
+				},
+				route: function(start, end, cb) {
+					if (hideRoute) {
+						return cb(null);
+					}
+					var request = {
+						origin: start,
+						destination: end,
+						travelMode: google.maps.TravelMode.DRIVING
+					};
+					var service = new google.maps.DirectionsService();
+					service.route(request, function(response, status) {
+						if (status == google.maps.DirectionsStatus.OK) {
+							cb(response);
+						} else {
+							cb(null);
+						}
+					});
+					/*
+					key = start + ';' + end
+					
+					if (localStorage[key]) {
+						cb(JSON.parse(localStorage[key]));
+					} else {
+						var request = {
+							origin: start,
+							destination: end,
+							travelMode: google.maps.TravelMode.DRIVING
+						};
+						var service = new google.maps.DirectionsService();
+						service.route(request, function(response, status) {
+							if (status == google.maps.DirectionsStatus.OK) {
+								localStorage[key] = JSON.stringify(response);
+								cb(response);
+							} else {
+								cb(null);
+							}
+						});
+					}
+					*/
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Trip Las Vegas</h1>
+				<p class="lead">Plan ahead, be prepared.</p>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th style="width:80px;">
+							Day
+						</th>
+						<th style="width:120px;">
+							Time
+						</th>
+						<th>
+							Plan
+						</th>
+						<th style="width:320px;">
+							Map
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Dec 19</td>
+						<td>22:10</td>
+						<td>
+							<p>
+								<span class="glyphicon glyphicon-plane"></span>
+								Arrive at McCarran International Airport, Las Vegas
+							</p>
+							<p>
+								<span class="glyphicon glyphicon-credit-card"></span>
+								Pick up car at Hertz McCarran International Airport, Las Vegas
+							</p>
+							<p>
+								<span class="glyphicon glyphicon-header"></span>
+								Stay at Riviera Hotel &amp; Casino, South Las Vegas Boulevard, Las Vegas
+							</p>
+						</td>
+						<td>
+							<div id="map-1" class="map">
+							</div>
+							<script type="text/javascript">
+								var start = 'McCarran International Airport, Wayne Newton Boulevard, Las Vegas, NV, USA';
+								var end = 'Riviera Hotel & Casino, South Las Vegas Boulevard, Las Vegas, NV, United States';
+								p.geocode(start, function(result) {
+									var options = {
+										zoom: 12,
+										center: result
+									};
+									var map = new google.maps.Map(document.getElementById('map-1'), options);
+									var display = new google.maps.DirectionsRenderer();
+									display.setMap(map);
+									p.route(start, end, function(response) {
+										display.setDirections(response);
+									});
+								});
+							</script>
+						</td>
+					</tr>
+					<tr>
+						<td>Dec 20</td>
+						<td>7:00</td>
+						<td>
+							<p>
+								<span class="glyphicon glyphicon-road"></span> Drive to Death Valley National Park
+							</p>
+							
+							<h4>
+								<span class="glyphicon glyphicon-tree-conifer"></span> Death Valley N. P.
+							</h4>
+
+							<p>
+								POIS: 
+							</p>
+						
+						</td>
+						<td>
+							<div id="map-2" class="map">
+							</div>
+							<script type="text/javascript">
+								start = 'Riviera Hotel & Casino, South Las Vegas Boulevard, Las Vegas, NV, United States';
+								end = 'Zabriskie Point';
+								p.geocode(start, function(result) {
+									var options = {
+										zoom: 12,
+										center: result
+									};
+									var map = new google.maps.Map(document.getElementById('map-2'), options);
+									var display = new google.maps.DirectionsRenderer();
+									display.setMap(map);
+									p.route(start, end, function(response) {
+										display.setDirections(response);
+									});
+								});
+							</script>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
