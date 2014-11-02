@@ -113,8 +113,7 @@
 							</p>
 						</td>
 						<td>
-							<div id="map-1" class="map">
-							</div>
+							<div id="map-1" class="map"></div>
 							<script type="text/javascript">
 								var start = 'McCarran International Airport, Wayne Newton Boulevard, Las Vegas, NV, USA';
 								var end = 'Riviera Hotel & Casino, South Las Vegas Boulevard, Las Vegas, NV, United States';
@@ -134,28 +133,30 @@
 						</td>
 					</tr>
 					<tr>
-						<td>Dec 20</td>
+						<td rowspan="2">Dec 20</td>
 						<td>7:00</td>
 						<td>
 							<p>
-								<span class="glyphicon glyphicon-road"></span> Drive to Death Valley National Park
+								<span class="glyphicon glyphicon-shopping-cart"></span> 
+								Shop at Walmart, 7200 Arroyo Crossing Pkwy, Las Vegas, NV, USA
+							</p>
+							<p>
+								<span class="glyphicon glyphicon-road"></span> 
+								Drive to Shoshone, CA, USA
 							</p>
 							
-							<h4>
-								<span class="glyphicon glyphicon-tree-conifer"></span> Death Valley N. P.
-							</h4>
 
 							<p>
 								POIS: 
 							</p>
 						
 						</td>
-						<td>
-							<div id="map-2" class="map">
-							</div>
+						<td rowspan="2">
+							<div id="map-2" class="map"></div>
+							<div id="map-3" class="map"></div>
 							<script type="text/javascript">
 								start = 'Riviera Hotel & Casino, South Las Vegas Boulevard, Las Vegas, NV, United States';
-								end = 'Zabriskie Point';
+								end = 'Walmart, 7200 Arroyo Crossing Pkwy, Las Vegas, NV, USA';
 								p.geocode(start, function(result) {
 									var options = {
 										zoom: 12,
@@ -169,6 +170,32 @@
 									});
 								});
 							</script>
+							<script type="text/javascript">
+								start = '7200 Arroyo Crossing Pkwy, Las Vegas, NV, USA';
+								end = 'Shoshone, CA, USA';
+								p.geocode(start, function(result) {
+									var options = {
+										zoom: 12,
+										center: result
+									};
+									var map = new google.maps.Map(document.getElementById('map-3'), options);
+									var display = new google.maps.DirectionsRenderer();
+									display.setMap(map);
+									p.route(start, end, function(response) {
+										display.setDirections(response);
+									});
+								});
+							</script>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>9:00</p>
+						</td>
+						<td>
+							<p>
+								<h4><span class="glyphicon glyphicon-tree-conifer"></span> Death Valley National Park</h4>
+							</p>
 						</td>
 					</tr>
 				</tbody>

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"Enlar",
+				"EnlargeControl"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
 				"subj",
 				"subject"
 			],
@@ -143,6 +151,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "trip/index.html",
+			"settings":
+			{
+				"buffer_size": 4973,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "trip/css/mine.css",
+			"settings":
+			{
+				"buffer_size": 102,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -185,10 +209,16 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/shengyingpan/Projects/fun"
+		"/Users/shengyingpan/Projects/fun",
+		"/Users/shengyingpan/Projects/fun/trip",
+		"/Users/shengyingpan/Projects/fun/trip/css",
+		"/Users/shengyingpan/Projects/fun/trip/fonts",
+		"/Users/shengyingpan/Projects/fun/trip/js"
 	],
 	"file_history":
 	[
+		"/Users/shengyingpan/Projects/fun/trip/css/mine.css",
+		"/Users/shengyingpan/Projects/fun/.gitignore",
 		"/Users/shengyingpan/Projects/ti/app/models/question.coffee",
 		"/Users/shengyingpan/Projects/ti/app/public/templates/admin/school.edit.html",
 		"/Users/shengyingpan/Projects/ti/app/public/js/routes/adminRoute.coffee",
@@ -362,8 +392,65 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "trip/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4973,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3633,
+								3633
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2032.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "trip/css/mine.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 102,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								99,
+								99
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -440,7 +527,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 267.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
